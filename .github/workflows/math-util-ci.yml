@@ -1,0 +1,46 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Math Utility Repo applying CI   #Đặt tên cho tất cả các lệnh ở dưới
+                                      #Tên của sanh sách các công việc cân làm khi ai đó
+                                      #push code lên, sửa code của kho
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:                          #build cái app
+
+    runs-on: ubuntu-latest        # 1. Mượn cái server bên Mỹ, cài OS 
+
+    steps:
+    - uses: actions/checkout@v3   #m 2. Dowload code về server vừa mượn
+    - name: Set up JDK 21        # 3. Cài jdk server
+      uses: actions/setup-java@v3
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven (tạo .jar .war)          #4 mượn maven và chạy lệnh
+      run: mvn -B package --file pom.xml  
+
+
+    - name: Distribute jar-war file # Gửi file .jar .war đi đâu, CD nhảy vào ...
+      run: mkdir staging && cp target/*.jar staging # tạo thư mục staging chứa file .jar .war sau khi build      
+     
+    - name: Make hyperlink to jar-war file # Tạo hyperlink để download build 
+      uses: actions/upload-artifact@v1
+      with:
+          name: HAY-DOWLOAD-JAR-O-DAY  #đây là đường link trỏ tới file.war .jar
+          path: staging                #nếu đc build thành 
+
+# End of CI workflow file
+
+  
