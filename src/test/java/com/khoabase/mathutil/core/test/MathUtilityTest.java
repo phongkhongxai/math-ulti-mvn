@@ -38,4 +38,7 @@ public class MathUtilityTest {
         assertEquals(120, MathUtility.getFactorial(5));
 
     }
+    
+    //3 TEST CASE ABOVE IS BAD SMELL, BECAUSE JUST DIFFERENT OF DATA 
+    // THEN I WILL USE DDT -DATA DRIVEN TESTING
 }
