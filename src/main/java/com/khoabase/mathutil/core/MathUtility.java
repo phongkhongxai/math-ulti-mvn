@@ -19,6 +19,21 @@ public class MathUtility {
     //n! tăng rất nhanh, 20! vừa đủ full kiểu long 18 con số 0
     //vậy 21! không chứa trong long được, tràn kiểu dữ liệu
     //quy ước < 0 ! và >20! NÉM NGOẠI LỆ, KHÔNG TÍNH ĐƯỢC
+//    public static long getFactorial(int n){
+//        if(n<0 && n>20){
+//            throw new IllegalArgumentException("Invalid n. n must be 0..20");
+//        }
+//        if(n==0 || n==1){
+//            return 1; // kết thúc sớm hàm, nếu có thể
+//        }
+//        long result = 1; // biến tích lũy, gom dồn việc nhân, biến con heo đất accumulation
+//        
+//        //sống sót đến for, sure n = 2..20
+//        for (int i = 2; i <= n; i++) {
+//            result*=i;
+//        }
+//        return result;
+//    }
     public static long getFactorial(int n){
         if(n<0 && n>20){
             throw new IllegalArgumentException("Invalid n. n must be 0..20");
@@ -26,12 +41,16 @@ public class MathUtility {
         if(n==0 || n==1){
             return 1; // kết thúc sớm hàm, nếu có thể
         }
-        long result = 10; // biến tích lũy, gom dồn việc nhân, biến con heo đất accumulation
+        //Dung DE QUY
         
-        //sống sót đến for, sure n = 2..20
-        for (int i = 2; i <= n; i++) {
-            result*=i;
-        }
-        return result;
+        return n*getFactorial(n-1);
+        
     }
+    //KĨ THUẬT KIỂM THỬ GỌI LÀ REGRESSION TESTING
+    //                          KIỂM THỬ HỒI QUY - TEST LẠI NHỮNG THỨ ĐÃ TỪNG TEST
+    //Trong thực tế làm dự án, code của ta sẽ liên tục dc chỉnh sửa
+    //sửa vì:
+    // fix bug thì phỉa sửa code, sủa hàm
+    // thêm hàm, thêm tính năng
+   // tối ưu bản cũ, làm hàm cũ gọn hơn, dễ đọc hơn, chạy nhanh hơn
 }
