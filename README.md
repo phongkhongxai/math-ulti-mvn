@@ -11,7 +11,7 @@
 * A regression testing technique (optimize source and make sure it is green again)
 
 #### Screen-shots
-![JUnit test script](https://github.com/phongkhongxai/math-ulti-mvn/blob/main/screenshots/test%20script%20with%20junit.png)
+![JUnit test script](https://github.com/phongkhongxai/math-ulti-mvn/blob/main/screenshots/test%20script%20with%20junit%20ddt.png)
 
 ##### Connect me via: thieuphong2003@gmail.com
 
